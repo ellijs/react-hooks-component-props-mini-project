@@ -4,18 +4,14 @@ function Article({title, date ="January 1, 1970", preview, minutes}) {
     console.log(minutes)
     let emoji;
     let emojiNum;
-    let newArray = []
     
-    emojiNum = Math.ceil(minutes/5)
-    console.log(emojiNum * "☕️")
-    for(let i= 1; i <= emojiNum; i++) {
-        if (minutes <30) {
-            console.log(newArray.push("☕️"))
-        } else {
-            newArray.push("🍱")
-        }
+    if (minutes <30) {
+        emoji = "☕️"
+        emojiNum = Math.ceil(minutes/5)
+    } else {
+        emoji = "🍱"
+        emojiNum = Math.ceil(minutes/10)
     }
-
 
     return (
         <article>
@@ -23,7 +19,7 @@ function Article({title, date ="January 1, 1970", preview, minutes}) {
                 {title}
             </h3>
             <small>
-                {date}
+                {date}  <span>&#8226;</span>   {emoji.repeat(emojiNum)} {minutes} min read
             </small>
             <p>
                 {preview}
